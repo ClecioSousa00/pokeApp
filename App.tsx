@@ -13,6 +13,7 @@ import { ThemeProvider } from '@shopify/restyle'
 import { theme } from './src/theme'
 import { Routes } from './src/routes'
 import { Box } from './src/restyle'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -25,10 +26,10 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <StatusBar style="light" backgroundColor="transparent" translucent />
-      <Box flex={1} justifyContent="center" alignItems="center" bg="primary">
+      <StatusBar style="dark" backgroundColor="transparent" translucent />
+      <SafeAreaView style={{ flex: 1 }}>
         <Routes />
-      </Box>
+      </SafeAreaView>
     </ThemeProvider>
   )
 }

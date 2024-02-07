@@ -3,6 +3,7 @@
     "name": "pokedexApp",
     "slug": "pokedexApp",
     "version": "1.0.0",
+    "userInterfaceStyle": "light",
     "assetBundlePatterns": [
       "**/*"
     ]

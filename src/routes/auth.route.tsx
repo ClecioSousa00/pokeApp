@@ -14,7 +14,7 @@ const { Navigator, Screen } = createNativeStackNavigator<StackNavigationProps>()
 
 export const AuthRoute = () => {
   return (
-    <Navigator>
+    <Navigator screenOptions={{ headerShown: false }}>
       <Screen name="onboarding" component={Onboarding}></Screen>
     </Navigator>
   )
