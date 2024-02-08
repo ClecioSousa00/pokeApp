@@ -4,9 +4,11 @@ export const buttonVariants = {
     borderRadius: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'primary',
   },
   inactive: {
     backgroundColor: 'inactive',
+  },
+  primary: {
+    backgroundColor: 'primary',
   },
 }

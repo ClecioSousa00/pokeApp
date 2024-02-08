@@ -1,4 +1,4 @@
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
 import { Text } from '../../restyle'
 import {
   SpacingProps,
@@ -19,11 +19,12 @@ const Box = createRestyleComponent<BoxCustomProps, ThemeProps>([
 
 type ButtonProps = {
   name: string
-} & BoxCustomProps
+} & BoxCustomProps &
+  TouchableOpacityProps
 
 export const Button = ({ name, ...rest }: ButtonProps) => {
   return (
-    <TouchableOpacity style={{ width: '100%' }} activeOpacity={0.7}>
+    <TouchableOpacity {...rest} style={{ width: '100%' }} activeOpacity={0.7}>
       <Box {...rest}>
         <Text textTransform="capitalize" variant="buttonText">
           {name}

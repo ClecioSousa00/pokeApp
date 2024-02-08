@@ -12,7 +12,6 @@ import { ThemeProvider } from '@shopify/restyle'
 
 import { theme } from './src/theme'
 import { Routes } from './src/routes'
-import { Box } from './src/restyle'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function App() {
