@@ -21,10 +21,11 @@ export const Onboarding = () => {
         </Text>
         <Button
           variant="primary"
-          onPress={() => navigation.navigate('logInLogOut')}
-          name="vamos começar"
+          onPress={() => navigation.navigate('logInSignUp')}
           marginTop="xl"
-        />
+        >
+          <Text variant="buttonText">Vamos começar</Text>
+        </Button>
       </Box>
     </Screen>
   )

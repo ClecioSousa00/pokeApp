@@ -3,8 +3,11 @@ import { Box, Text } from '../../../restyle'
 import { Button } from '../../../components/Button'
 import { Screen } from '../components/Screen'
 import { Feather } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native'
+import { AuthRouteProps } from '../../../routes/auth.route'
 
-export const LogInLogOut = () => {
+export const LogInSignUp = () => {
+  const navigation = useNavigation<AuthRouteProps>()
   return (
     <Screen>
       <TouchableOpacity>
@@ -22,15 +25,17 @@ export const LogInLogOut = () => {
           Basta criar uma conta e começar a explorar o mundo dos Pokémon hoje!
         </Text>
         <Button
-          name="criar conta"
+          onPress={() => navigation.navigate('register')}
           marginTop="xl"
           marginBottom="m"
           variant="primary"
-        />
+        >
+          <Text variant="buttonText">Criar conta</Text>
+        </Button>
 
-        <TouchableOpacity activeOpacity={0.7}>
+        <Button>
           <Text variant="buttonTransparentText">Já tenho uma conta</Text>
-        </TouchableOpacity>
+        </Button>
       </Box>
     </Screen>
   )

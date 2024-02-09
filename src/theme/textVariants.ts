@@ -22,6 +22,6 @@ export const textVariants = {
   },
   headerTitle: {
     fontSize: 18,
-    fontFamily: 'Poppins_500Medium',
+    fontFamily: 'Poppins_600SemiBold',
   },
 }

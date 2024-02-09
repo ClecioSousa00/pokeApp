@@ -11,4 +11,8 @@ export const buttonVariants = {
   primary: {
     backgroundColor: 'primary',
   },
+  outline: {
+    borderWidth: 2,
+    borderColor: 'inactive',
+  },
 }

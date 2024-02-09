@@ -18,18 +18,14 @@ const Box = createRestyleComponent<BoxCustomProps, ThemeProps>([
 ])
 
 type ButtonProps = {
-  name: string
+  children: React.ReactNode
 } & BoxCustomProps &
   TouchableOpacityProps
 
-export const Button = ({ name, ...rest }: ButtonProps) => {
+export const Button = ({ children, ...rest }: ButtonProps) => {
   return (
     <TouchableOpacity {...rest} style={{ width: '100%' }} activeOpacity={0.7}>
-      <Box {...rest}>
-        <Text textTransform="capitalize" variant="buttonText">
-          {name}
-        </Text>
-      </Box>
+      <Box {...rest}>{children}</Box>
     </TouchableOpacity>
   )
 }
