@@ -4,8 +4,12 @@ import { Header } from '../components/Header'
 import { Screen } from '../components/Screen'
 import { Button } from '../../../components/Button'
 import GoogleIcon from '../../../assets/googleIcon.svg'
+import { useNavigation } from '@react-navigation/native'
+import { AuthRouteProps } from '../../../routes/auth.route'
 
 export const Register = () => {
+  const navigation = useNavigation<AuthRouteProps>()
+
   return (
     <Screen>
       <Header name="entrar" />
@@ -17,7 +21,11 @@ export const Register = () => {
         <Text variant="text" textAlign="center">
           Como deseja se conectar?
         </Text>
-        <Button variant="primary" marginTop="xl">
+        <Button
+          onPress={() => navigation.navigate('registerEmail')}
+          variant="primary"
+          marginTop="xl"
+        >
           <Text variant="buttonText">Continuar com um e-mail</Text>
         </Button>
         <Button variant="outline" marginTop="sm">

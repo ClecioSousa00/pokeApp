@@ -1,5 +1,4 @@
 import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
-import { Text } from '../../restyle'
 import {
   SpacingProps,
   VariantProps,
