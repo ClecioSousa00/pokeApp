@@ -7,4 +7,9 @@ export const inputVariants = {
     justifyContent: 'center',
     paddingHorizontal: 'm',
   },
+  inputIcon: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 }

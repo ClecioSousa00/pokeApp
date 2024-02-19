@@ -5,13 +5,17 @@ import {
 import { Onboarding } from '../screens/auth/Onboarding'
 import { LogInSignUp } from '../screens/auth/LogInSignUp'
 import { Register } from '../screens/auth/Register'
-import { RegisterEmail } from '../screens/auth/Register/RegisterEmail'
+import { RegisterEmail } from '../screens/auth/Register/screens/RegisterEmail'
+import { RegisterPassword } from '../screens/auth/Register/screens/RegisterPassword'
+import { RegisterUsername } from '../screens/auth/Register/screens/RegisterUsername'
 
 type StackNavigationProps = {
   onboarding: undefined
   logInSignUp: undefined
   register: undefined
   registerEmail: undefined
+  registerPassword: undefined
+  registerUsername: undefined
 }
 
 export type AuthRouteProps = NativeStackNavigationProp<StackNavigationProps>
@@ -25,6 +29,8 @@ export const AuthRoute = () => {
       <Screen name="logInSignUp" component={LogInSignUp} />
       <Screen name="register" component={Register} />
       <Screen name="registerEmail" component={RegisterEmail} />
+      <Screen name="registerPassword" component={RegisterPassword} />
+      <Screen name="registerUsername" component={RegisterUsername} />
     </Navigator>
   )
 }

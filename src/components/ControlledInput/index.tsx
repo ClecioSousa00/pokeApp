@@ -27,7 +27,7 @@ export const ControlledInput = ({
 }: ControlledInputProps) => {
   return (
     <Box {...rest}>
-      <TextInput {...rest} />
+      <TextInput {...rest} style={{ flex: 1 }} />
       {!!children && children}
     </Box>
   )

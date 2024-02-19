@@ -1,11 +1,15 @@
 import { Keyboard, TouchableWithoutFeedback } from 'react-native'
-import { Button } from '../../../../components/Button'
-import { ControlledInput } from '../../../../components/ControlledInput'
-import { Box, Text } from '../../../../restyle'
-import { Header } from '../../components/Header'
-import { Screen } from '../../components/Screen'
+import { Button } from '../../../../../components/Button'
+import { ControlledInput } from '../../../../../components/ControlledInput'
+import { Box, Text } from '../../../../../restyle'
+import { Header } from '../../../components/Header'
+import { Screen } from '../../../components/Screen'
+import { useNavigation } from '@react-navigation/native'
+import { AuthRouteProps } from '../../../../../routes/auth.route'
 
 export const RegisterEmail = () => {
+  const navigation = useNavigation<AuthRouteProps>()
+
   return (
     <Screen>
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -21,7 +25,10 @@ export const RegisterEmail = () => {
             keyboardType="email-address"
           />
           <Box flex={1} justifyContent="flex-end">
-            <Button variant="inactive">
+            <Button
+              variant="inactive"
+              onPress={() => navigation.navigate('registerPassword')}
+            >
               <Text variant="buttonInactiveText" textTransform="capitalize">
                 continuar
               </Text>
