@@ -5,4 +5,5 @@ export const colors = {
   inactive: '#E6E6E6',
   inactiveSecondary: '#4D4D4D',
   buttonInactiveText: '#999999',
+  danger: '#CD3131',
 }

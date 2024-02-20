@@ -35,4 +35,13 @@ export const textVariants = {
     fontSize: 18,
     fontFamily: 'Poppins_600SemiBold',
   },
+
+  messageInputText: {
+    fontSize: 12,
+    color: 'inactiveSecondary',
+  },
+  messageInputErrorText: {
+    fontSize: 12,
+    color: 'danger',
+  },
 }
