@@ -8,8 +8,17 @@ import { useForm } from 'react-hook-form'
 import { UsernameSchema, UsernameSchemaType } from '../../schema/registerSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { InputMessage } from '../../../../../components/InputMessage'
+import { useRoute } from '@react-navigation/native'
+
+type ParamsProps = {
+  email: string
+  password: string
+}
 
 export const RegisterUsername = () => {
+  const route = useRoute()
+  const { email, password } = route.params as ParamsProps
+
   const {
     control,
     handleSubmit,
@@ -19,7 +28,7 @@ export const RegisterUsername = () => {
   })
 
   const onSubmit = (data: UsernameSchemaType) => {
-    console.log(data.username)
+    console.log(data.username, email, password)
   }
 
   return (
@@ -33,7 +42,7 @@ export const RegisterUsername = () => {
           </Box>
           <ControlledInput
             marginTop="ml"
-            name="name"
+            name="username"
             control={control}
             placeholder="Nome"
           />
@@ -41,21 +50,10 @@ export const RegisterUsername = () => {
             errorMessage={errors.username?.message}
             inputMessage="Esse será seu nome de usuário no aplicativo."
           />
-          {/* {errors.username?.message && (
-            <Text variant="messageInputErrorText" textAlign="center" mt="s">
-              {errors.username?.message}
-            </Text>
-          )}
-          {!errors.username?.message && (
-            <Text variant="messageInputText" textAlign="center" mt="s">
-              Esse será seu nome de usuário no aplicativo.
-            </Text>
-          )} */}
-          {/* <ControlledInput marginTop="ml" placeholder="Nome" /> */}
 
           <Box flex={1} justifyContent="flex-end">
-            <Button variant="inactive" onPress={handleSubmit(onSubmit)}>
-              <Text variant="buttonInactiveText" textTransform="capitalize">
+            <Button variant="primary" onPress={handleSubmit(onSubmit)}>
+              <Text variant="buttonText" textTransform="capitalize">
                 continuar
               </Text>
             </Button>

@@ -12,4 +12,7 @@ export const inputVariants = {
     flexDirection: 'row',
     alignItems: 'center',
   },
+  inputError: {
+    borderColor: 'danger',
+  },
 }

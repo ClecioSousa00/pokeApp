@@ -14,8 +14,8 @@ type StackNavigationProps = {
   logInSignUp: undefined
   register: undefined
   registerEmail: undefined
-  registerPassword: undefined
-  registerUsername: undefined
+  registerPassword: { email: string }
+  registerUsername: { email: string; password: string }
 }
 
 export type AuthRouteProps = NativeStackNavigationProp<StackNavigationProps>
