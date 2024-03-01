@@ -9,6 +9,9 @@ import { UsernameSchema, UsernameSchemaType } from '../../schema/registerSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { InputMessage } from '../../../../../components/InputMessage'
 import { useRoute } from '@react-navigation/native'
+import { auth, db } from '../../../../../services/firebaseConfig'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { doc, setDoc } from 'firebase/firestore'
 
 type ParamsProps = {
   email: string
@@ -29,6 +32,21 @@ export const RegisterUsername = () => {
 
   const onSubmit = (data: UsernameSchemaType) => {
     console.log(data.username, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(async (userCredential) => {
+        // Signed up
+        const user = userCredential.user
+        await setDoc(doc(db, 'users', user.uid), {
+          username: data.username,
+          userId: user.uid,
+        })
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code
+        const errorMessage = error.message
+        // ..
+      })
   }
 
   return (
