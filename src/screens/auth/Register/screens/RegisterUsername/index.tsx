@@ -12,6 +12,7 @@ import { useRoute } from '@react-navigation/native'
 import { auth, db } from '../../../../../services/firebaseConfig'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { doc, setDoc } from 'firebase/firestore'
+import { useRegisterViewModel } from './useRegisterViewModel'
 
 type ParamsProps = {
   email: string
@@ -19,35 +20,37 @@ type ParamsProps = {
 }
 
 export const RegisterUsername = () => {
-  const route = useRoute()
-  const { email, password } = route.params as ParamsProps
+  // const route = useRoute()
+  // const { email, password } = route.params as ParamsProps
 
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<UsernameSchemaType>({
-    resolver: zodResolver(UsernameSchema),
-  })
+  // const {
+  //   control,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm<UsernameSchemaType>({
+  //   resolver: zodResolver(UsernameSchema),
+  // })
 
-  const onSubmit = (data: UsernameSchemaType) => {
-    console.log(data.username, email, password)
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(async (userCredential) => {
-        // Signed up
-        const user = userCredential.user
-        await setDoc(doc(db, 'users', user.uid), {
-          username: data.username,
-          userId: user.uid,
-        })
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code
-        const errorMessage = error.message
-        // ..
-      })
-  }
+  // const onSubmit = (data: UsernameSchemaType) => {
+  //   console.log(data.username, email, password)
+  //   createUserWithEmailAndPassword(auth, email, password)
+  //     .then(async (userCredential) => {
+  //       // Signed up
+  //       const user = userCredential.user
+  //       await setDoc(doc(db, 'users', user.uid), {
+  //         username: data.username,
+  //         userId: user.uid,
+  //       })
+  //       // ...
+  //     })
+  //     .catch((error) => {
+  //       const errorCode = error.code
+  //       const errorMessage = error.message
+  //       // ..
+  //     })
+  // }
+
+  const { control, errors, handleSubmit } = useRegisterViewModel()
 
   return (
     <Screen>
@@ -70,7 +73,7 @@ export const RegisterUsername = () => {
           />
 
           <Box flex={1} justifyContent="flex-end">
-            <Button variant="primary" onPress={handleSubmit(onSubmit)}>
+            <Button variant="primary" onPress={handleSubmit}>
               <Text variant="buttonText" textTransform="capitalize">
                 continuar
               </Text>
