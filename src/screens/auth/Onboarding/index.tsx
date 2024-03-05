@@ -5,13 +5,15 @@ import { useNavigation } from '@react-navigation/native'
 import { AuthRouteProps } from '../../../routes/auth.route'
 import { Screen } from '../components/Screen'
 
+import img from '../../../assets/onboardImage.png'
+
 export const Onboarding = () => {
   const navigation = useNavigation<AuthRouteProps>()
 
   return (
     <Screen>
       <Box justifyContent="flex-end" alignItems="center" flex={1}>
-        <Image source={require('../../../assets/onboardImage.png')} alt="" />
+        <Image source={img} alt="" />
         <Text variant="title" textAlign="center" mt="l" mb="sm">
           Todos os Pokémons em um só Lugar
         </Text>
@@ -19,6 +21,7 @@ export const Onboarding = () => {
           Acesse uma vasta lista de Pokémon de todas as gerações já feitas pela
           Nintendo
         </Text>
+
         <Button
           variant="primary"
           onPress={() => navigation.navigate('logInSignUp')}

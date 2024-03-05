@@ -1,12 +1,12 @@
-import { useRoute } from '@react-navigation/native'
-import { UserData } from './model'
 import { useForm } from 'react-hook-form'
-import { UsernameSchema, UsernameSchemaType } from '../../schema/registerSchema'
+import { useRoute } from '@react-navigation/native'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { auth, db } from '../../../../../services/firebaseConfig'
-import { doc, setDoc } from 'firebase/firestore'
-import { registerUser } from '../../../../../services/actions/userActions'
+
+import { UserData } from './model'
+import { UsernameSchema, UsernameSchemaType } from '../../schema/registerSchema'
+import { UserService } from '../../../../../services/actions/userActions'
+import { FirebaseErrors } from '../../../../../services/firebaseErrorMensages'
+import { Alert } from 'react-native'
 
 export const useRegisterViewModel = () => {
   const route = useRoute()
@@ -21,36 +21,19 @@ export const useRegisterViewModel = () => {
   })
 
   const onSubmit = async (data: UsernameSchemaType) => {
-    const registerUserResponse = await registerUser(
+    const registerUserResponse = await UserService.registerUser({
       email,
       password,
-      data.username,
-    )
+      username: data.username,
+    })
 
     if (!registerUserResponse.success) {
       const errorCode = registerUserResponse.error.code
-      const errorMessage = registerUserResponse.error.message
-      console.log(errorCode)
-      console.log('---------------------------------')
-      console.log(errorMessage)
+      Alert.alert(
+        'Oops',
+        `Não foi possível efetuar o login: ${FirebaseErrors[errorCode]}`,
+      )
     }
-
-    // console.log(data.username, email, password)
-    // createUserWithEmailAndPassword(auth, email, password)
-    //   .then(async (userCredential) => {
-    //     // Signed up
-    //     const user = userCredential.user
-    //     await setDoc(doc(db, 'users', user.uid), {
-    //       username: data.username,
-    //       userId: user.uid,
-    //     })
-    //     // ...
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code
-    //     const errorMessage = error.message
-    //     // ..
-    //   })
   }
 
   return {

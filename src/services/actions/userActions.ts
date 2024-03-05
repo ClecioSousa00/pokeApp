@@ -1,13 +1,14 @@
 // firebaseAuth.ts
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { doc, setDoc } from 'firebase/firestore'
-import { auth, db } from '../../services/firebaseConfig'
+import { auth } from '../../services/firebaseConfig'
+import { RegisterUserProps } from '../types'
+import { UserAccess } from '../dataAccess/userAccess'
 
-export const registerUser = async (
-  email: string,
-  password: string,
-  username: string,
-) => {
+export const registerUser = async ({
+  email,
+  password,
+  username,
+}: RegisterUserProps) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(
       auth,
@@ -15,12 +16,14 @@ export const registerUser = async (
       password,
     )
     const user = userCredential.user
-    await setDoc(doc(db, 'users', user.uid), {
-      username,
-      userId: user.uid,
-    })
+    await UserAccess.setUserAccess({ username, user })
+
     return { success: true, user }
   } catch (error) {
     return { success: false, error }
   }
+}
+
+export const UserService = {
+  registerUser,
 }

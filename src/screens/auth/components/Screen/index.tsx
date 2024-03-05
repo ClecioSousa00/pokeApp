@@ -1,5 +1,4 @@
 import { Box } from '../../../../restyle'
-import { Header } from '../Header'
 
 type ScreenProps = {
   children: React.ReactNode

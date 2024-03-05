@@ -7,6 +7,8 @@ import GoogleIcon from '../../../assets/googleIcon.svg'
 import { useNavigation } from '@react-navigation/native'
 import { AuthRouteProps } from '../../../routes/auth.route'
 
+import img from '../../../assets/imgRegister.png'
+
 export const Register = () => {
   const navigation = useNavigation<AuthRouteProps>()
 
@@ -14,13 +16,14 @@ export const Register = () => {
     <Screen>
       <Header name="entrar" />
       <Box justifyContent="flex-end" alignItems="center" flex={1}>
-        <Image source={require('../../../assets/imgRegister.png')} alt="" />
+        <Image source={img} alt="" />
         <Text variant="title" textAlign="center" mt="l" mb="sm">
           Falta pouco para explorar esse mundo!
         </Text>
         <Text variant="text" textAlign="center">
           Como deseja se conectar?
         </Text>
+
         <Button
           onPress={() => navigation.navigate('registerEmail')}
           variant="primary"

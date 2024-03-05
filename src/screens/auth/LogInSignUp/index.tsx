@@ -1,4 +1,4 @@
-import { Image, TouchableOpacity } from 'react-native'
+import { Image, Pressable } from 'react-native'
 import { Box, Text } from '../../../restyle'
 import { Button } from '../../../components/Button'
 import { Screen } from '../components/Screen'
@@ -10,12 +10,12 @@ export const LogInSignUp = () => {
   const navigation = useNavigation<AuthRouteProps>()
   return (
     <Screen>
-      <TouchableOpacity>
-        <Box flexDirection="row" gap="xs" justifyContent="flex-end">
+      <Pressable style={{ alignSelf: 'flex-end' }}>
+        <Box flexDirection="row" gap="xs">
           <Text variant="headerTitle"> Pular</Text>
           <Feather name="arrow-right" size={24} color="black" />
         </Box>
-      </TouchableOpacity>
+      </Pressable>
       <Box justifyContent="flex-end" alignItems="center" flex={1}>
         <Image source={require('../../../assets/imgLogin.png')} alt="" />
         <Text variant="title" textAlign="center" mt="l" mb="sm">
