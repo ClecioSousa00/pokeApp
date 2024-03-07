@@ -1,39 +1,15 @@
-import { useState } from 'react'
 import { Keyboard, TouchableWithoutFeedback } from 'react-native'
 import { Button } from '../../../../../components/Button'
 import { ControlledInput } from '../../../../../components/ControlledInput'
 import { Box, Text } from '../../../../../restyle'
 import { Header } from '../../../components/Header'
 import { Screen } from '../../../components/Screen'
-import { useNavigation } from '@react-navigation/native'
-import { AuthRouteProps } from '../../../../../routes/auth.route'
-import { useForm } from 'react-hook-form'
-import { EmailSchemaType, EmailSchema } from '../../schema/registerSchema'
-import { zodResolver } from '@hookform/resolvers/zod'
+
 import { InputMessage } from '../../../../../components/InputMessage'
+import { useRegisterEmailViewModel } from './useRegisterEmailViewModel'
 
 export const RegisterEmail = () => {
-  const navigation = useNavigation<AuthRouteProps>()
-  // const [isFocused, setIsFocused] = useState(false)
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<EmailSchemaType>({
-    resolver: zodResolver(EmailSchema),
-  })
-
-  // const handleFocus = () => {
-  //   setIsFocused(true)
-  // }
-
-  // const handleBlur = () => {
-  //   setIsFocused(false)
-  // }
-
-  const onSubmit = (data: EmailSchemaType) => {
-    navigation.navigate('registerPassword', { email: data.email })
-  }
+  const { control, errors, handleSubmit } = useRegisterEmailViewModel()
 
   return (
     <Screen>
@@ -50,8 +26,6 @@ export const RegisterEmail = () => {
             control={control}
             placeholder="E-mail"
             keyboardType="email-address"
-            // onFocus={handleFocus}
-            // onBlur={handleBlur}
           />
           <InputMessage
             errorMessage={errors.email?.message}
@@ -59,7 +33,7 @@ export const RegisterEmail = () => {
           />
 
           <Box flex={1} justifyContent="flex-end">
-            <Button variant={'primary'} onPress={handleSubmit(onSubmit)}>
+            <Button variant={'primary'} onPress={handleSubmit}>
               <Text variant={'buttonText'} textTransform="capitalize">
                 continuar
               </Text>
