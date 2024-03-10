@@ -21,7 +21,7 @@ export const useRegisterViewModel = () => {
   })
 
   const onSubmit = async (data: UsernameSchemaType) => {
-    const registerUserResponse = await UserService.registerUser({
+    const registerUserResponse = await UserService.registerUserAction({
       email,
       password,
       username: data.username,

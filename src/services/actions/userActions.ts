@@ -1,10 +1,10 @@
 // firebaseAuth.ts
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { User, createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../services/firebaseConfig'
-import { RegisterUserProps } from '../types'
+import { RegisterUserProps, UserType } from '../types'
 import { UserAccess } from '../dataAccess/userAccess'
 
-export const registerUser = async ({
+export const registerUserAction = async ({
   email,
   password,
   username,
@@ -24,6 +24,21 @@ export const registerUser = async ({
   }
 }
 
+const getUserAction = async (user: User) => {
+  try {
+    const doc = await UserAccess.getUserAccess(user)
+    if (doc.exists()) {
+      const data = doc.data() as UserType
+
+      return data
+    }
+    console.log('No such document!')
+  } catch (error) {
+    console.log('ERRO ao pegar o usuário', error)
+  }
+}
+
 export const UserService = {
-  registerUser,
+  registerUserAction,
+  getUserAction,
 }

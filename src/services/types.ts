@@ -3,3 +3,8 @@ export type RegisterUserProps = {
   password: string
   username: string
 }
+
+export type UserType = {
+  userId: string
+  username: string
+}
