@@ -4,6 +4,9 @@
     "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
   ],
   "setupFilesAfterEnv":[
-    "./setup-jest.ts"
+    "./__test__/mock/testingLibrary-setup.js"
+  ],
+  "setupFiles":[
+    "./__test__/mock/react-navigation-setup.js"
   ]
 }
